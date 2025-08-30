@@ -38,7 +38,7 @@
                 <p class="text-sm text-gray-600 dark:text-gray-400">
                     Already have an account?
                     <a href="{{ route('login') }}"
-                        class="text-blue-600 dark:text-blue-400 hover:underline font-medium">{{ __('Sign in') }}</a>
+                        class="text-jule-600 dark:text-jule-400 hover:underline font-medium">{{ __('Sign in') }}</a>
                 </p>
             </div>
         </div>

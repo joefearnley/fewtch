@@ -22,7 +22,7 @@
                     <div class="flex items-center justify-between mt-2">
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}"
-                                class="text-xs text-blue-600 dark:text-blue-400 hover:underline">{{ __('Forgot password?') }}</a>
+                                class="text-xs text-jule-600 dark:text-jule-400 hover:underline">{{ __('Forgot password?') }}</a>
                         @endif
                         <x-forms.checkbox label="Remember me" name="remember" />
                     </div>
@@ -38,7 +38,7 @@
                     <p class="text-sm text-gray-600 dark:text-gray-400">
                         {{ __('Don\'t have an account?') }}
                         <a href="{{ route('register') }}"
-                            class="text-blue-600 dark:text-blue-400 hover:underline font-medium">{{ __('Sign up') }}</a>
+                            class="text-jule-600 dark:text-jule-400 hover:underline font-medium">{{ __('Sign up') }}</a>
                     </p>
                 </div>
             @endif

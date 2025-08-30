@@ -39,7 +39,7 @@
             <!-- Back to Login Link -->
             <div class="text-center mt-6">
                 <a href="{{ route('login') }}"
-                    class="text-blue-600 dark:text-blue-400 hover:underline font-medium">{{ __('Back to login') }}</a>
+                    class="text-jule-600 dark:text-jule-400 hover:underline font-medium">{{ __('Back to login') }}</a>
             </div>
         </div>
     </div>

@@ -16,6 +16,18 @@
     --sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
     --sidebar-border: hsl(var(--sidebar-border));
     --sidebar-ring: hsl(var(--sidebar-ring));
+
+    --color-jule-50: oklch(95.64% 0.019 235.69);
+    --color-jule-100: oklch(91.21% 0.038 233.55);
+    --color-jule-200: oklch(83.22% 0.08 231.38);
+    --color-jule-300: oklch(74.54% 0.104 229.12);
+    --color-jule-400: oklch(65.74% 0.093 229.68);
+    --color-jule-500: oklch(57.25% 0.08 229.47);
+    --color-jule-600: oklch(48.69% 0.068 228.36);
+    --color-jule-700: oklch(40.19% 0.056 228.45);
+    --color-jule-800: oklch(30.83% 0.043 228.71);
+    --color-jule-900: oklch(22.31% 0.031 229.69);
+    --color-jule-950: oklch(17.68% 0.024 226.64);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -24,7 +36,7 @@
     .bg-sidebar {
         background-color: hsl(var(--sidebar-background));
     }
-    
+
     .bg-sidebar-accent {
         background-color: hsl(var(--sidebar-accent));
     }

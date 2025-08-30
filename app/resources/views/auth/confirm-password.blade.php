@@ -26,7 +26,7 @@
             <!-- Forgot Password Link -->
             <div class="text-center mt-6">
                 <a href="{{ route('password.request') }}"
-                    class="text-blue-600 dark:text-blue-400 hover:underline font-medium">{{ __('Forgot your password?') }}</a>
+                    class="text-jule-600 dark:text-jule-400 hover:underline font-medium">{{ __('Forgot your password?') }}</a>
             </div>
         </div>
     </div>
