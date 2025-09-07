@@ -1,7 +1,5 @@
-<!-- Header -->
 <header class="bg-white dark:bg-gray-800 shadow-sm z-20 border-b border-gray-200 dark:border-gray-700">
     <div class="flex items-center justify-between h-16 px-4">
-        <!-- Left side: Logo and toggle -->
         <div class="flex items-center">
             <button @click="toggleSidebar"
                 class="p-2 rounded-md text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
@@ -12,10 +10,7 @@
             </button>
             <div class="ml-4 font-semibold text-xl text-blue-600 dark:text-blue-400">{{ config('app.name') }}</div>
         </div>
-
-        <!-- Right side: Search, notifications, profile -->
         <div class="flex items-center space-x-4">
-            <!-- Profile -->
             <div x-data="{ open: false }" class="relative">
                 <button @click="open = !open" class="flex items-center focus:outline-none">
                     <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
@@ -30,7 +25,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-
                 <div x-show="open" @click.away="open = false" :class="{ 'block': open, 'hidden': !open }"
                     class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50 border border-gray-200 dark:border-gray-700">
                     <a href="{{ route('settings.profile.edit') }}"
