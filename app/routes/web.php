@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Settings;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MessageController;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -9,8 +10,9 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::get('message', [App\Http\Controllers\MessageController::class, 'index'])
-    ->name('message.index');
+Route::get('message', [MessageController::class, 'index'])->name('message.index');
+Route::post('message', [MessageController::class, 'store'])->name('message.store');
+Route::post('message', [MessageController::class, 'update'])->name('message.update');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('settings/profile', [Settings\ProfileController::class, 'edit'])->name('settings.profile.edit');
