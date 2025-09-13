@@ -29,7 +29,10 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
+        $rwq = $request->validated();
 
+        Message::create($rwq);
+        return redirect()->route('message.index');
     }
 
     /**
