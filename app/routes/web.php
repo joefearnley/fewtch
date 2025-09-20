@@ -12,7 +12,7 @@ Route::view('dashboard', 'dashboard')
 
 Route::get('message', [MessageController::class, 'index'])->name('message.index');
 Route::post('message', [MessageController::class, 'store'])->name('message.store');
-Route::post('message', [MessageController::class, 'update'])->name('message.update');
+Route::patch('message', [MessageController::class, 'update'])->name('message.update');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('settings/profile', [Settings\ProfileController::class, 'edit'])->name('settings.profile.edit');

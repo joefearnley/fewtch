@@ -22,7 +22,9 @@ class StoreMessageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'content' => 'required|string|max:5000',
+            'send-in' => 'required_without:send-date|string|in:3 Months,6 Months,1 Year,3 Years,5 Years,10 Years',
+            'send-date' => 'required_without:send-in|date|after:today',
         ];
     }
 }
