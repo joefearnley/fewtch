@@ -10,9 +10,7 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::get('message', [MessageController::class, 'index'])->name('message.index');
 Route::post('message', [MessageController::class, 'store'])->name('message.store');
-Route::patch('message', [MessageController::class, 'update'])->name('message.update');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('settings/profile', [Settings\ProfileController::class, 'edit'])->name('settings.profile.edit');
@@ -21,6 +19,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/password', [Settings\PasswordController::class, 'edit'])->name('settings.password.edit');
     Route::put('settings/password', [Settings\PasswordController::class, 'update'])->name('settings.password.update');
     Route::get('settings/appearance', [Settings\AppearanceController::class, 'edit'])->name('settings.appearance.edit');
+
+    Route::get('message', [MessageController::class, 'index'])->name('message.index');
+    Route::patch('message', [MessageController::class, 'update'])->name('message.update');
 });
 
 require __DIR__.'/auth.php';

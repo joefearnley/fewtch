@@ -23,8 +23,21 @@ class StoreMessageRequest extends FormRequest
     {
         return [
             'content' => 'required|string|max:5000',
-            'send-in' => 'required_without:send-date|string|in:3 Months,6 Months,1 Year,3 Years,5 Years,10 Years',
-            'send-date' => 'required_without:send-in|date|after:today',
+            'send_in' => 'required_without:send-date|string|in:3 Months,6 Months,1 Year,3 Years,5 Years,10 Years',
+            'send_date' => 'required_without:send-in|date|after:today',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'send_in.required_without' => 'Please select a send date or interval',
+            'send_date.required_without' => 'Please select a send date or interval',
         ];
     }
 }

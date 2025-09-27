@@ -7,7 +7,10 @@
             id="message-body"
             rows="10"
             placeholder="Compose your message here..."></textarea>
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            @error('content')
+                <div class="text-red-700 text-sm mb-4">{{ $message }}</div>
+            @enderror
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mt-4">
             <div>
                 <div class="inline-block mr-6">
                     <label class="block mb-1 text-left text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -20,11 +23,14 @@
                         <button class="p-2 text-xs flex-shrink-0 rounded-md transition-colors bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-foreground cursor-pointer">3 Years</button>
                         <button class="p-2 text-xs flex-shrink-0 rounded-md transition-colors bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-foreground cursor-pointer">5 Years</button>
                         <button class="p-2 text-xs flex-shrink-0 rounded-md transition-colors bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-foreground cursor-pointer">10 Years</button>
-                        <input type="hidden" name="send-in" id="send-in" value="3 Months">
+                        <input type="hidden" name="send_in" id="send-in" value="3 Months">
                     </div>
+                    @error('required_without')
+                        <span class="text-red-700 text-sm pb-5">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="inline-block mr-6 text-left">
-                    <x-forms.input label="Specify a Date:" name="send-date" id="send-date" type="date" />
+                    <x-forms.input label="Specify a Date:" name="send_date" id="send-date" type="date" />
                 </div>
             </div>
 
