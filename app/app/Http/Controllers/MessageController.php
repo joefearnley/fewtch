@@ -33,7 +33,6 @@ class MessageController extends Controller
 
         dd($validatedData);
 
-
         Message::create($validatedData);
 
         return redirect()->route('message.index');

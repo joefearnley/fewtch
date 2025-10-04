@@ -30,7 +30,7 @@
                     @enderror
                 </div>
                 <div class="inline-block mr-6 text-left">
-                    <x-forms.input label="Specify a Date:" name="send_date" id="send-date" type="date" />
+                    <x-forms.input label="Specify a Date:" name="send_date" id="send-date" type="date" value="{{ old('send_date') }}" />
                 </div>
             </div>
 
