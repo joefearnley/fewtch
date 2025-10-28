@@ -31,7 +31,7 @@ class SendDate implements ValidationRule
             $fail('Please select a send date or interval.');
         }
 
-        if (!empty($this->sendDate)) {
+        if (empty($this->sendIn) && !empty($this->sendDate)) {
 
             $dateRule = (new Date)->afterOrEqual('today');
             $result = $dateRule->passes($attribute, $this->sendDate);
