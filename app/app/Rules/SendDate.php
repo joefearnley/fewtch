@@ -32,7 +32,6 @@ class SendDate implements ValidationRule
         }
 
         if (empty($this->sendIn) && !empty($this->sendDate)) {
-
             $dateRule = (new Date)->afterOrEqual('today');
             $result = $dateRule->passes($attribute, $this->sendDate);
 

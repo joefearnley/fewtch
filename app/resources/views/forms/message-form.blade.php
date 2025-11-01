@@ -3,8 +3,8 @@
         @csrf
         <textarea
             class="w-full mb-0 p-4 rounded-lg text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-jule-500 focus:border-transparent"
-            name="message-body"
-            id="message-body"
+            name="content"
+            id="content"
             rows="10"
             placeholder="Compose your message here..."></textarea>
         @error('content')

@@ -29,13 +29,19 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        $validatedData = $request->validated();
+        $validatedFormData = $request->validated();
 
-        dd($validatedData);
+        dd($validatedFormData);
 
-        Message::create($validatedData);
+        Message::create($validatedFormData);
 
-        return redirect()->route('message.index');
+        $request->session()->flash('success', 'Your message has been prepared to be sent!');
+
+        if (auth()->check()) {
+            return redirect()->route('dashboard');
+        }
+
+        return redirect()->route('home');
     }
 
     /**
