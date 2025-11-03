@@ -9,4 +9,15 @@ class Message extends Model
 {
     /** @use HasFactory<\Database\Factories\MessageFactory> */
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'content',
+        'send_date',
+        'user_id',
+    ];
 }

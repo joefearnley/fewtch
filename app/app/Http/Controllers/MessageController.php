@@ -29,11 +29,10 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        $validatedFormData = $request->validated();
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
 
-        dd($validatedFormData);
-
-        Message::create($validatedFormData);
+        Message::create($validatedData);
 
         $request->session()->flash('success', 'Your message has been prepared to be sent!');
 
