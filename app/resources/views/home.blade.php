@@ -86,7 +86,7 @@
                         </div>
                     @endsession
                     <div class="my-6">
-                        <h1 class="text-4xl text-gray-600 dark:text-gray-100">{{ __('Welcome to Fewtch!')}}</h1>
+                        <h1 class="text-4xl text-gray-600 dark:text-gray-100">{{ __('Welcome to Futch!')}}</h1>
                         <p class="text-gray-600 dark:text-gray-400 mt-3">{{ __('Send an email to your Future self.') }}</p>
                     </div>
 
