@@ -36,7 +36,7 @@
                 @enderror
             </div>
             <div class="flex justify-end mt-4 md:mt-0">
-                <x-button>{{ __('Futch It!') }}</x-button>
+                <x-button>{{ __('Send It!') }}</x-button>
             </div>
         </div>
     </form>

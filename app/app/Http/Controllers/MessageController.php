@@ -34,7 +34,7 @@ class MessageController extends Controller
 
         Message::create($validatedData);
 
-        $request->session()->flash('success', 'Your message has been prepared to be sent!');
+        $request->session()->flash('status', __('Your message has been prepared to be sent!'));
 
         if (auth()->check()) {
             return redirect()->route('dashboard');
