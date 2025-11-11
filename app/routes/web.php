@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Settings;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
