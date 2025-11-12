@@ -8,6 +8,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        $totalMessages = auth()->user()->messages->count();
+        $queuedMessages = auth()->user()->messages->where('sent', false)->count();
+
+        return view('dashboard')->with([
+            'totalMessages' => $totalMessages,
+            'queuedMessages' => $queuedMessages,
+        ]);
     }
 }
