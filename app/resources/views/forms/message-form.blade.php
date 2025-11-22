@@ -1,6 +1,10 @@
 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-200 dark:border-gray-700">
     <form method="POST" action="{{ route('message.store') }}" class="space-y-3">
         @csrf
+        <div class="mb-4">
+            <x-forms.input label="Subject" labelClass="sr-only" name="subject" type="subject" placeholder="Add your message subject here..." />
+        </div>
+        <div>
         <textarea
             class="w-full mb-0 p-4 rounded-lg text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-jule-500 focus:border-transparent"
             name="content"
@@ -10,6 +14,7 @@
         @error('content')
             <div class="text-red-700 dark:text-red-400 text-sm mb-4">{{ $message }}</div>
         @enderror
+        </div>
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mt-4">
             <div>
                 <div class="flex flex-col md:flex-row md:items-start">

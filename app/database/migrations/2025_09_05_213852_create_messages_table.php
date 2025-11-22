@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->string('subject', length: 100);
             $table->text('content');
             $table->boolean('sent')->default(false);
             $table->date('send_date')->nullable();

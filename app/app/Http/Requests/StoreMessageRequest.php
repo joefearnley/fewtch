@@ -22,6 +22,7 @@ class StoreMessageRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'subject' => 'required|string|max:100',
             'content' => 'required|string|max:5000',
             'send_date' => 'required|date|after:today',
         ];
