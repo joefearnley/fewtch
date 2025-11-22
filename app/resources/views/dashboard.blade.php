@@ -22,7 +22,13 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('Total Emails') }}</p>
-                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">{{ $totalMessages }}</p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">
+                        @if (!$totalMessages->isEmpty())
+                            {{ $totalMessages->count() }}
+                        @else
+                            --
+                        @endif
+                    </p>
                     <p class="text-xs text-gray-500 flex items-center mt-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -43,7 +49,13 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('Email to be Sent') }}</p>
-                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">--</p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">
+                        @if (!$totalMessages->isEmpty())
+                            {{ $totalMessages->count() }}
+                        @else
+                            --
+                        @endif
+                    </p>
                     <p class="text-xs text-gray-500 flex items-center mt-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -63,8 +75,14 @@
     </div>
 
     <div>
-        <!-- list of emails-->
-
+        <!-- list of messages -->
+        @foreach($totalMessages as $message)
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-200 dark:border-gray-700 mb-4">
+                <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ $message->title }}</h2>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">{{ $message->body }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">{{ __('Sent: ') }} {{ $message->sent ? __('Yes') : __('No') }}</p>
+            </div>
+        @endforeach
     </div>
 
 </x-layouts.app>
