@@ -11,7 +11,7 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::post('message', [MessageController::class, 'store'])->name('message.store');
+Route::post('message', [MessageController::class, 'store'])->name('messages.store');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -23,8 +23,11 @@ Route::middleware(['auth'])->group(function () {
     Route::put('settings/password', [Settings\PasswordController::class, 'update'])->name('settings.password.update');
     Route::get('settings/appearance', [Settings\AppearanceController::class, 'edit'])->name('settings.appearance.edit');
 
-    Route::get('message', [MessageController::class, 'index'])->name('message.index');
-    Route::patch('message', [MessageController::class, 'update'])->name('message.update');
+    Route::get('message', [MessageController::class, 'index'])->name('messages.index');
+    Route::get('message', [MessageController::class, 'edit'])->name('messages.edit');
+    Route::patch('message', [MessageController::class, 'update'])->name('messages.update');
+    Route::post('message/cancel', [MessageController::class, 'cancel'])->name('messages.cancel');
+    Route::delete('message', [MessageController::class, 'destroy'])->name('messages.destroy');
 });
 
 require __DIR__.'/auth.php';

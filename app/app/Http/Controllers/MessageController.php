@@ -74,4 +74,12 @@ class MessageController extends Controller
     {
         //
     }
+
+    /**
+     * Cancel the message from being sent.
+     */
+    public function cancel(Message $message)
+    {
+        //
+    }
 }

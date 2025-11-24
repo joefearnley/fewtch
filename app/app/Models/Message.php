@@ -21,4 +21,44 @@ class Message extends Model
         'send_date',
         'user_id',
     ];
+
+    /**
+     * Get the user that owns the message.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the message status.
+     */
+    public function getStatusAttribute()
+    {
+        if ($this->cancelled) {
+            return __('Cancelled');
+        }
+
+        if ($this->sent) {
+            return __('Sent');
+        }
+
+        return __('Pending');
+    }
+
+        /**
+     * Get the message status.
+     */
+    public function getStatusColorAttribute()
+    {
+        if ($this->cancelled) {
+            return 'amber';
+        }
+
+        if (!$this->sent) {
+            return 'yellow';
+        }
+
+        return 'emerald';
+    }
 }
