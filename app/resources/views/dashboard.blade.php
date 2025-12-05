@@ -92,8 +92,10 @@
                 <tbody>
                     @foreach($totalMessages as $message)
                     <tr>
-                        <td class="text-sm border-b border-gray-100 p-4 text-gray-500 dark:border-gray-700 dark:text-gray-400">
-                            <div class="text-xs px-3 py-1 bg-{{ $message->statusColor }}-200 text-{{ $message->statusColor }}-800 rounded-full w-fit text-center">{{ $message->status }}</div>
+                        <td class="text-sm border-b border-gray-100 p-4 dark:border-gray-700">
+                            <div style="" class="text-xs px-3 py-1 bg-{{ $message->statusColor }}-200 text-{{ $message->statusColor }}-900 rounded-full w-fit text-center">
+                                {{ $message->status }}
+                            </div>
                         </td>
                         <td class="text-sm border-b border-gray-100 p-4 text-gray-500 dark:border-gray-700 dark:text-gray-400">{{  \Carbon\Carbon::parse($message->created_at)->format('m/d/Y')  }}</td>
                         <td class="text-sm border-b border-gray-100 p-4 text-gray-500 dark:border-gray-700 dark:text-gray-400">{{  \Carbon\Carbon::parse($message->send_date)->format('m/d/Y')  }}</td>
@@ -106,7 +108,7 @@
                                     </svg>
                                 </a>
                                 <form action="{{ route('messages.cancel', $message->id) }}" method="DELETE" class="text-amber-500 hover:underline ml-4">
-                                    <button type="submit" class="cursor-pointer" title="{{ __('Cancel Message') }}">
+                                    <button type="subsmit" class="cursor-pointer" title="{{ __('Cancel Message') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
                                         </svg>

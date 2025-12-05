@@ -52,7 +52,7 @@ class Message extends Model
     public function getStatusColorAttribute()
     {
         if ($this->cancelled) {
-            return 'amber';
+            return 'pink';
         }
 
         if (!$this->sent) {
