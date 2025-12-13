@@ -21,10 +21,10 @@
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-200 dark:border-gray-700">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('Total Emails') }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('Emails Sent') }}</p>
                     <p class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">
-                        @if (!$totalMessages->isEmpty())
-                            {{ $totalMessages->count() }}
+                        @if (!$sentMessages->isEmpty())
+                            {{ $sentMessages->count() }}
                         @else
                             --
                         @endif
@@ -48,10 +48,10 @@
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-200 dark:border-gray-700">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('Email to be Sent') }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('Emails to be Sent') }}</p>
                     <p class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">
-                        @if (!$totalMessages->isEmpty())
-                            {{ $totalMessages->count() }}
+                        @if (!$queuedMessages->isEmpty())
+                            {{ $queuedMessages->count() }}
                         @else
                             --
                         @endif
@@ -68,6 +68,33 @@
                 <div class="bg-green-100 dark:bg-green-900 p-3 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-green-500 dark:text-green-300">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-200 dark:border-gray-700">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('Cancelled Emails') }}</p>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-100 mt-1">
+                        @if (!$cancelledMessages->isEmpty())
+                            {{ $cancelledMessages->count() }}
+                        @else
+                            --
+                        @endif
+                    </p>
+                    <p class="text-xs text-gray-500 flex items-center mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                        </svg>
+                        {{ __('No data') }}
+                    </p>
+                </div>
+                <div class="bg-red-100 dark:bg-red-900 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-red-500 dark:text-red-300">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
                 </div>
             </div>
