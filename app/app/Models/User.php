@@ -66,4 +66,35 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class);
     }
+
+    /**
+     * Get the sent messages for the user.
+     */
+    public function sentMessages()
+    {
+        return $this->hasMany(Message::class)
+            ->where('sent', true)
+            ->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get the cancelled messages for the user.
+     */
+    public function cancelledMessages()
+    {
+        return $this->hasMany(Message::class)
+            ->where('cancelled', true)
+            ->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get the queued messages for the user.
+     */
+    public function queuedMessages()
+    {
+        return $this->hasMany(Message::class)
+            ->where('sent', false)
+            ->where('cancelled', false)
+            ->orderBy('created_at', 'desc');
+    }
 }

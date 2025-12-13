@@ -8,10 +8,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $totalMessages = auth()->user()->messages;
-        $sentMessages = auth()->user()->messages->where('sent', true);
-        $queuedMessages = auth()->user()->messages->where('sent', false);
-        $cancelledMessages = auth()->user()->messages->where('cancelled', true);
+        $totalMessages = auth()->user()->messages->sortByDesc('created_at');
+        $sentMessages = auth()->user()->sentMessages;
+        $queuedMessages = auth()->user()->queuedMessages;
+        $cancelledMessages = auth()->user()->sentMessages;
 
         return view('dashboard')->with([
             'totalMessages' => $totalMessages,

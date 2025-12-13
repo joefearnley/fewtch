@@ -41,6 +41,11 @@
                 @enderror
             </div>
             <div class="flex justify-end mt-4 md:mt-0">
+                @auth
+                <a href="{{ route('dashboard') }}" class="text-white font-medium py-2 px-4 mr-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors flex items-center justify-center cursor-pointer bg-jule-300 hover:bg-jule-400 focus:ring-jule-100">
+                    {{ __('Cancel') }}
+                </a>
+                @endauth
                 <x-button>{{ __('Send It!') }}</x-button>
             </div>
         </div>
