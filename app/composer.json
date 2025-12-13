@@ -1,8 +1,8 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laraveldaily/starter-kit",
+    "name": "joefearnley/futch",
     "type": "project",
-    "description": "LaravelDaily Starter Kit for the Laravel framework.",
+    "description": "Laravel App to send future messages.",
     "keywords": [
         "laravel",
         "framework"
