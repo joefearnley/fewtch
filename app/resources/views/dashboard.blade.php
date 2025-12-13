@@ -120,7 +120,13 @@
                     @foreach($totalMessages as $message)
                     <tr>
                         <td class="text-sm border-b border-gray-100 p-4 dark:border-gray-700">
-                            <div style="" class="text-xs px-3 py-1 bg-{{ $message->statusColor }}-200 text-{{ $message->statusColor }}-900 rounded-full w-fit text-center">
+                        @if ($message->cancelled)
+                            <div style="" class="text-xs px-3 py-1 bg-pink-200 text-pink-900 rounded-full w-fit text-center">
+                        @elseif ($message->sent)
+                            <div style="" class="text-xs px-3 py-1 bg-yellow-200 text-yellow-900 rounded-full w-fit text-center">
+                        @else
+                            <div style="" class="text-xs px-3 py-1 bg-emerald-200 text-emerald-900 rounded-full w-fit text-center">
+                        @endif
                                 {{ $message->status }}
                             </div>
                         </td>

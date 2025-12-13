@@ -45,20 +45,4 @@ class Message extends Model
 
         return __('Pending');
     }
-
-        /**
-     * Get the message status.
-     */
-    public function getStatusColorAttribute()
-    {
-        if ($this->cancelled) {
-            return 'pink';
-        }
-
-        if (!$this->sent) {
-            return 'yellow';
-        }
-
-        return 'emerald';
-    }
 }
