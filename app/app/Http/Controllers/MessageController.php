@@ -80,6 +80,26 @@ class MessageController extends Controller
      */
     public function cancel(Message $message)
     {
-        //
+        if ($message->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $message->update(['cancelled' => true]);
+
+        return redirect()->route('dashboard')->with('status', __('Message has been cancelled successfully.'));
+    }
+
+    /**
+     * Requeue the message.
+     */
+    public function requeue(Message $message)
+    {
+        if ($message->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $message->update(['cancelled' => false]);
+
+        return redirect()->route('dashboard')->with('status', __('Message has been requeued successfully.'));
     }
 }

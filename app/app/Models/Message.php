@@ -20,6 +20,8 @@ class Message extends Model
         'content',
         'send_date',
         'user_id',
+        'sent',
+        'cancelled',
     ];
 
     /**
