@@ -124,13 +124,13 @@
                             <div style="" class="flex flex-row items-center text-xs px-3 py-1 bg-pink-200 text-pink-900 rounded-full w-fit text-center">
                                 <span class="pr-1">{{ $message->status }}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
                                 </svg>
                         @elseif ($message->sent)
                             <div style="" class="flex flex-row items-center text-xs px-3 py-1 bg-emerald-200 text-emerald-900 rounded-full w-fit text-center">
                                 <span class="pr-1">{{ $message->status }}</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                                 </svg>
                         @else
                             <div style="" class="flex flex-row items-center text-xs px-3 py-1 bg-yellow-200 text-yellow-900 rounded-full w-fit text-center">
