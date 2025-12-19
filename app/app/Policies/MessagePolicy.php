@@ -13,7 +13,7 @@ class MessagePolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class MessagePolicy
      */
     public function view(User $user, Message $message): bool
     {
-        return false;
+        return $user->id === $message->user_id;
     }
 
     /**

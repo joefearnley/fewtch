@@ -60,7 +60,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the message in storage.
      */
     public function update(UpdateMessageRequest $request, Message $message)
     {
@@ -68,11 +68,17 @@ class MessageController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the message from storage.
      */
     public function destroy(Message $message)
     {
-        //
+        if ($message->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $message->delete();
+
+        return redirect()->route('dashboard')->with('status', __('Message has been deleted successfully.'));
     }
 
     /**
