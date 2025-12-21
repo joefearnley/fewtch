@@ -37,7 +37,7 @@ class MessagePolicy
      */
     public function update(User $user, Message $message): bool
     {
-        return false;
+        return $user->id === $message->user_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class MessagePolicy
      */
     public function delete(User $user, Message $message): bool
     {
-        return false;
+        return $user->id === $message->user_id;
     }
 
     /**
@@ -53,7 +53,7 @@ class MessagePolicy
      */
     public function restore(User $user, Message $message): bool
     {
-        return false;
+        return $user->id === $message->user_id;
     }
 
     /**
