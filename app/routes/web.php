@@ -26,9 +26,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('message', [MessageController::class, 'index'])->name('messages.index');
     Route::get('message', [MessageController::class, 'edit'])->name('messages.edit');
     Route::patch('message', [MessageController::class, 'update'])->name('messages.update');
-    Route::post('message/cance/{message}', [MessageController::class, 'cancel'])->name('messages.cancel');
+    Route::post('message/cancel/{message}', [MessageController::class, 'cancel'])->name('messages.cancel');
     Route::post('message/requeue/{message}', [MessageController::class, 'requeue'])->name('messages.requeue');
-    Route::delete('message', [MessageController::class, 'destroy'])->name('messages.destroy');
+    Route::delete('message/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 });
 
 require __DIR__.'/auth.php';

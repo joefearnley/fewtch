@@ -20,6 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::policy(Message::class, OrderPolicy::class);
+        Gate::policy(Message::class, MessagePolicy::class);
     }
 }

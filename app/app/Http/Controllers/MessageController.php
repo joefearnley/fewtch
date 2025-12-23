@@ -72,10 +72,6 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        if ($message->user_id !== auth()->id()) {
-            abort(403);
-        }
-
         $message->delete();
 
         return redirect()->route('dashboard')->with('status', __('Message has been deleted successfully.'));
