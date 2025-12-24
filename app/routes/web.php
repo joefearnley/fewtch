@@ -24,8 +24,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', [Settings\AppearanceController::class, 'edit'])->name('settings.appearance.edit');
 
     Route::get('message', [MessageController::class, 'index'])->name('messages.index');
-    Route::get('message', [MessageController::class, 'edit'])->name('messages.edit');
-    Route::patch('message', [MessageController::class, 'update'])->name('messages.update');
+    Route::get('message/{message}', [MessageController::class, 'edit'])->name('messages.edit');
+    Route::patch('message/{message}', [MessageController::class, 'update'])->name('messages.update');
     Route::post('message/cancel/{message}', [MessageController::class, 'cancel'])->name('messages.cancel');
     Route::post('message/requeue/{message}', [MessageController::class, 'requeue'])->name('messages.requeue');
     Route::delete('message/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');

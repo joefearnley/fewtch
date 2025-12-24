@@ -44,19 +44,15 @@ class MessageController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Message $message)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Message $message)
     {
-        //
+        $message = Message::findOrFail($message->id);
+
+        return view('messages.edit')->with([
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -64,7 +60,11 @@ class MessageController extends Controller
      */
     public function update(UpdateMessageRequest $request, Message $message)
     {
-        //
+        $validatedData = $request->validated();
+
+        $message->update($validatedData);
+
+        return redirect()->route('dashboard')->with('status', __('Message has been updated successfully.'));
     }
 
     /**

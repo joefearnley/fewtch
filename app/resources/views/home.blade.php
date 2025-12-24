@@ -43,7 +43,6 @@
             </div>
         </header>
 
-
         <div class="flex flex-1 overflow-hidden">
             <main class="flex-1 overflow-auto bg-gray-100 dark:bg-gray-900 content-transition">
                 <div class="p-6 lg:max-w-3/4 mx-auto">
