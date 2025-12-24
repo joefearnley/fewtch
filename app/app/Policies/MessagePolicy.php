@@ -37,7 +37,7 @@ class MessagePolicy
      */
     public function update(User $user, Message $message): bool
     {
-                dd('user', $user, 'message', $message);
+        dd('user', $user, 'message', $message);
 
         return $user->id === $message->user_id;
     }
