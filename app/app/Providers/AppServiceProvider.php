@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Models\Message;
+use App\Policies\MessagePolicy;
 
 class AppServiceProvider extends ServiceProvider
 {
