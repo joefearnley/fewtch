@@ -29,10 +29,6 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        if (auth()->check()) {
-            return redirect()->route('dashboard');
-        }
-
         $validatedData = $request->validated();
         $validatedData['user_id'] = auth()->id();
 
@@ -40,7 +36,7 @@ class MessageController extends Controller
 
         $request->session()->flash('status', __('Your message has been prepared to be sent!'));
 
-        return redirect()->route('home');
+        return auth()->check() ? redirect()->route('dashboard') : redirect()->route('home');
     }
 
     /**

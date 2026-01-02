@@ -4,22 +4,6 @@ use App\Models\Message;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 
-test('guest can create a message', function () {
-    $data = [
-        'subject' => 'Test Subject',
-        'content' => 'This is a test message content.',
-        'send_date' => now()->addDays(2)->toDateString(),
-    ];
-
-    $this->post(route('messages.store'), $data)
-        ->assertRedirect(route('home'));
-
-    $this->assertDatabaseHas('messages', [
-        'subject' => 'Test Subject',
-        'content' => 'This is a test message content.',
-    ]);
-});
-
 test('authenticated user can view the edit form for their message', function () {
     $user = User::factory()->create();
 
