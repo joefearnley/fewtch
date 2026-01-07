@@ -21,6 +21,9 @@ class MessagePolicy
      */
     public function view(User $user, Message $message): bool
     {
+
+        dd($user->id);
+
         return $user->id === $message->user_id;
     }
 

@@ -44,6 +44,12 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
+        $this->authorize('update', $message);
+
+        // if ($message->user_id !== auth()->id()) {
+        //     abort(403);
+        // }
+
         $message = Message::findOrFail($message->id);
 
         return view('messages.edit')->with([

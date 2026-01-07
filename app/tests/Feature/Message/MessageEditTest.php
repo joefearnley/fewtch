@@ -23,12 +23,17 @@ test('authenticated user cannot view the edit form for another user\'s message',
     $user = User::factory()->create();
     $otherUser = User::factory()->create();
 
+    dump($otherUser->id);
+
+
     $message = Message::factory()->create([
         'user_id' => $otherUser->id,
         'subject' => 'Original Subject',
         'content' => 'Original content',
         'send_date' => now()->addDays(3)->toDateString(),
     ]);
+
+    dump( $message->user_id );
 
     $this->actingAs($user)
         ->get(route('messages.edit', $message))
