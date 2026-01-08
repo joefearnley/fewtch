@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Message;
 
 class MessageController extends Controller
@@ -44,11 +45,7 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        $this->authorize('update', $message);
-
-        // if ($message->user_id !== auth()->id()) {
-        //     abort(403);
-        // }
+        Gate::authorize('update', $message);
 
         $message = Message::findOrFail($message->id);
 
@@ -62,6 +59,8 @@ class MessageController extends Controller
      */
     public function update(UpdateMessageRequest $request, Message $message)
     {
+        Gate::authorize('update', $message);
+
         $validatedData = $request->validated();
 
         $message->update($validatedData);

@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Message;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class MessagePolicy
 {
@@ -13,7 +12,7 @@ class MessagePolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -21,9 +20,6 @@ class MessagePolicy
      */
     public function view(User $user, Message $message): bool
     {
-
-        dd($user->id);
-
         return $user->id === $message->user_id;
     }
 
@@ -40,8 +36,6 @@ class MessagePolicy
      */
     public function update(User $user, Message $message): bool
     {
-        dd('user', $user, 'message', $message);
-
         return $user->id === $message->user_id;
     }
 
