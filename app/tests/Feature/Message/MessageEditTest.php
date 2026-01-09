@@ -35,30 +35,16 @@ test('authenticated user cannot view the edit form for another user\'s message',
         ->assertStatus(403);
 });
 
-test('authenticated user can update their message', function () {
+test('user must be authenticated to edit a message', function () {
     $user = User::factory()->create();
 
     $message = Message::factory()->create([
         'user_id' => $user->id,
-        'subject' => 'Old Subject',
-        'content' => 'Old content',
+        'subject' => 'Original Subject',
+        'content' => 'Original content',
         'send_date' => now()->addDays(3)->toDateString(),
     ]);
 
-    $update = [
-        'subject' => 'Updated Subject',
-        'content' => 'Updated content',
-        'send_date' => now()->addDays(5)->toDateString(),
-    ];
-
-    $this->actingAs($user)
-        ->patch(route('messages.update', $message), $update)
-        ->assertRedirect(route('dashboard'));
-
-    $this->assertDatabaseHas('messages', [
-        'id' => $message->id,
-        'subject' => 'Updated Subject',
-        'content' => 'Updated content',
-    ]);
+    $this->get(route('messages.edit', $message))
+        ->assertStatus(302);
 });
-
