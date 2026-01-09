@@ -46,5 +46,6 @@ test('user must be authenticated to edit a message', function () {
     ]);
 
     $this->get(route('messages.edit', $message))
-        ->assertStatus(302);
+        ->assertStatus(302)
+        ->assertRedirect(route('login'));
 });
