@@ -57,6 +57,8 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
+        Gate::authorize('delete', $message);
+
         $message->delete();
 
         return redirect()->route('dashboard')->with('status', __('Message has been deleted successfully.'));
