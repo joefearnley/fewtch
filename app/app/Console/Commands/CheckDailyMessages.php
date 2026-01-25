@@ -34,6 +34,11 @@ class CheckDailyMessages extends Command
 
         foreach ($messages as $message) {
             $this->info("Message ID {$message->id} is scheduled to be sent today.");
+            $this->info("Sending Message ID {$message->id}....");
+
+            // create 'email from email template and send it
+            // For demonstration, we'll just print a message
+
         }
     }
 }
