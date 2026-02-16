@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Message;
 
 class FutureMessage extends Mailable
 {
@@ -16,9 +17,8 @@ class FutureMessage extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(protected Message $message)
     {
-        //
     }
 
     /**
@@ -38,6 +38,9 @@ class FutureMessage extends Mailable
     {
         return new Content(
             view: 'view.message',
+            with: [
+                'messsage' => $this->message,
+            ]
         );
     }
 }

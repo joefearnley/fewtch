@@ -3,7 +3,10 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Message;
+use App\Mail\FutureMessage;
+
 
 class CheckDailyMessages extends Command
 {
@@ -36,7 +39,8 @@ class CheckDailyMessages extends Command
             $this->info("Message ID {$message->id} is scheduled to be sent today.");
             $this->info("Sending Message ID {$message->id}....");
 
-
+            Mail::to($message->user->email)
+                ->send(new FutureMessage($message));
         }
     }
 }
