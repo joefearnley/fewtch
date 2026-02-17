@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -27,7 +28,8 @@ class FutureMessage extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Future Message',
+            from: new Address(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME')),
+            subject: "Future Message: {$this->message->subject}",
         );
     }
 
@@ -37,9 +39,10 @@ class FutureMessage extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.message',
+            view: 'mail.messages.message',
             with: [
-                'messsage' => $this->message,
+                'dateCreated' => $this->message->created_at->format('m/d/Y'),
+                'content' => $this->message->content,
             ]
         );
     }
