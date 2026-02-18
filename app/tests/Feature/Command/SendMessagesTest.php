@@ -100,4 +100,3 @@ test('command finds and sends messages with correct content', function () {
         return str_contains($html, $message->content) && str_contains($html, $sendDate->format('m/d/Y'));
     });
 });
-

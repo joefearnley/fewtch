@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schedule;
 use App\Console\Commands\SendMessages;
 
 Artisan::command('inspire', function () {
@@ -11,6 +11,4 @@ Artisan::command('inspire', function () {
 
 
 // Schedule the SendMessages command to run daily
-Schedule::call(SendMessages::class)
-    ->purpose('Check for and sendmessages')
-    ->daily();
+Schedule::call(SendMessages::class)->daily();
