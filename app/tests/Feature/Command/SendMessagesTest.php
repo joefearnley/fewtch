@@ -100,3 +100,22 @@ test('command finds and sends messages with correct content', function () {
         return str_contains($html, $message->content) && str_contains($html, $sendDate->format('m/d/Y'));
     });
 });
+
+test('command sets message as sent when sent', function () {
+
+    $user = User::factory()->create();
+
+    $message = Message::factory()->create([
+        'user_id' => $user->id,
+        'subject' => 'Test Message',
+        'content' => 'This is a test message.',
+        'sent' => false,
+        'send_date' => now()->toDateString(),
+    ]);
+
+    $this->artisan('futch:send')
+        ->assertExitCode(0);
+
+    $message->refresh();
+    expect($message->sent)->toBe(1);
+});

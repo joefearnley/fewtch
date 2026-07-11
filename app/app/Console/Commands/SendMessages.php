@@ -50,6 +50,9 @@ class SendMessages extends Command
 
             $this->info("Message ID {$message->id} has been sent.");
 
+            $message->sent = true;
+            $message->save();
+
             $numberOfMessagesSent++;
         }
 
