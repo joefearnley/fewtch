@@ -1,2 +1,2 @@
 # futch
-Remind yourself that it is going to be alight.
+Remind yourself that it is going to be alright.
