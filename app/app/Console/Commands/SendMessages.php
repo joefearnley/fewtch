@@ -36,7 +36,11 @@ class SendMessages extends Command
 
         $today = now()->toDateString();
 
-        $messages = Message::whereDate('send_date', $today)->get();
+        $messages = Message::query()
+            ->whereDate('send_date', $today)
+            ->where('sent', false)
+            ->where('cancelled', false)
+            ->get();
 
         $totatlMessages = $messages->count();
         $numberOfMessagesSent = 0;

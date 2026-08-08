@@ -28,6 +28,17 @@ test('message creation requires a send date', function () {
     $response->assertInvalid(['send_date']);
 });
 
+test('message creation rejects a date that is not in the future and oversized fields', function () {
+    $response = $this->post(route('messages.store'), [
+        'subject' => str_repeat('s', 101),
+        'content' => str_repeat('c', 5001),
+        'send_date' => now()->toDateString(),
+    ])->assertRedirect(route('home'));
+
+    $response->assertInvalid(['subject', 'content', 'send_date']);
+    $this->assertDatabaseCount('messages', 0);
+});
+
 test('unauthenticated user can create a message', function () {
     $data = [
         'subject' => 'Test Subject',

@@ -119,3 +119,44 @@ test('command sets message as sent when sent', function () {
     $message->refresh();
     expect($message->sent)->toBe(1);
 });
+
+test('command sends only pending messages scheduled for today', function () {
+    Mail::fake();
+
+    $user = User::factory()->create();
+
+    $pendingMessage = Message::factory()->create([
+        'user_id' => $user->id,
+        'subject' => 'Pending message',
+        'sent' => false,
+        'cancelled' => false,
+        'send_date' => now()->toDateString(),
+    ]);
+
+    $sentMessage = Message::factory()->create([
+        'user_id' => $user->id,
+        'subject' => 'Sent message',
+        'sent' => true,
+        'cancelled' => false,
+        'send_date' => now()->toDateString(),
+    ]);
+
+    $cancelledMessage = Message::factory()->create([
+        'user_id' => $user->id,
+        'subject' => 'Cancelled message',
+        'sent' => false,
+        'cancelled' => true,
+        'send_date' => now()->toDateString(),
+    ]);
+
+    $this->artisan('futch:send')
+        ->expectsOutputToContain('Total messages scheduled to be sent today: 1')
+        ->expectsOutputToContain('Total messages sent today: 1')
+        ->assertExitCode(0);
+
+    Mail::assertSent(FutureMessage::class, 1);
+
+    expect($pendingMessage->fresh()->sent)->toBe(1)
+        ->and($sentMessage->fresh()->sent)->toBe(1)
+        ->and($cancelledMessage->fresh()->sent)->toBe(0);
+});
